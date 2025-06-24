@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Radio Watch | Project</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <nav>
+      <div class="nav__content">
+        <div class="logo"><a href="index.html">Mariyah Dahodwala</a></div>
+        <label for="check" class="checkbox">
+          <i class="ri-menu-line"></i>
+        </label>
+        <input type="checkbox" name="check" id="check" />
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="resume.html">Resume</a></li>
+          <li><a href="portfolio.html">Portfolio</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <section class="section project__page">
+      <div class="resume__container">
+	  <br><br><br><br>
+        <p class="subtitle">Project</p>
+        <h1 class="title"><span>Radio Watch</span></h1>
+
+        <p class="project__info">
+          An e-commerce site with a smart Bargain Feature, product filtering, and PDF bill generation. Built using Django.
+          <br />
+          <a href="https://github.com/mari-yah/Webstore" target="_blank">GitHub Repo</a>
+        </p><br />
+
+        <p class="description">
+          Radio Watch is an e-commerce website with a modern interface and a unique Bargain Feature that offers personalized discounts based on user purchase history.
+		<br /><br />
+		The website includes features such as advanced product filtering, intuitive cart management, seamless checkout, and automatic PDF bill generation. 
+		This project showcases a full-stack implementation with real-world business logic.
+		</p>
+
+        <!-- Technologies Used -->
+        <h3>Technologies Used</h3>
+        <div class="tech__badges">
+		  <span>Django</span>
+		  <span>Python</span>
+          <span>HTML5</span>
+          <span>CSS3</span>
+          <span>JavaScript</span>
+          <span>MySQL</span>
+        </div>
+
+        <h3 style="margin-top: 2rem;">Project Screenshots</h3> 
+		<div class="gallery">
+			<img src="assets/radio1.png" alt="Screenshot 1" class="gallery-img" />
+			<img src="assets/radio2.png" alt="Screenshot 2" class="gallery-img" />
+			<img src="assets/radio3.png" alt="Screenshot 3" class="gallery-img" />
+			<img src="assets/radio4.png" alt="Screenshot 4" class="gallery-img" />
+			<img src="assets/radio5.png" alt="Screenshot 5" class="gallery-img" />
+			<img src="assets/radio6.png" alt="Screenshot 6" class="gallery-img" />
+			<img src="assets/radio7.png" alt="Screenshot 7" class="gallery-img" />
+			<img src="assets/radio8.png" alt="Screenshot 8" class="gallery-img" />
+			<img src="assets/radio9.png" alt="Screenshot 9" class="gallery-img" />
+			<img src="assets/radio10.png" alt="Screenshot 10" class="gallery-img" />
+			<img src="assets/radio11.png" alt="Screenshot 11" class="gallery-img" />
+		</div>
+
+		<!-- Lightbox Modal -->
+		<div id="lightbox" class="lightbox">
+			<span class="close">&times;</span>
+			<img class="lightbox-content" id="lightbox-img" />
+			<div class="nav-arrows">
+				<span class="prev">&#10094;</span>
+				<span class="next">&#10095;</span>
+			</div>
+		</div>
+		
+
+        <a href="https://github.com/mari-yah/Webstore" class="btn__view" style="margin-top: 2rem;" target="_blank">← Github </a>
+		<a href="portfolio.html" class="btn__view" style="margin-top: 2rem;">← Back to Portfolio</a>
+      </div>
+    </section>
+	
+	<script>
+	const galleryImages = document.querySelectorAll(".gallery-img");
+	const lightbox = document.getElementById("lightbox");
+	const lightboxImg = document.getElementById("lightbox-img");
+	const closeBtn = document.querySelector(".close");
+	const prevBtn = document.querySelector(".prev");
+	const nextBtn = document.querySelector(".next");
+
+	let currentIndex = 0;
+
+	function openLightbox(index) {
+		currentIndex = index;
+		lightbox.style.display = "block";
+		lightboxImg.src = galleryImages[index].src;
+	}
+
+	galleryImages.forEach((img, index) => {
+		img.addEventListener("click", () => openLightbox(index));
+	});
+
+	closeBtn.addEventListener("click", () => (lightbox.style.display = "none"));
+
+	prevBtn.addEventListener("click", () => {
+		currentIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length;
+		lightboxImg.src = galleryImages[currentIndex].src;
+	});
+
+	nextBtn.addEventListener("click", () => {
+		currentIndex = (currentIndex + 1) % galleryImages.length;
+		lightboxImg.src = galleryImages[currentIndex].src;
+	});
+
+	window.addEventListener("keydown", (e) => {
+		if (lightbox.style.display === "block") {
+			if (e.key === "ArrowLeft") prevBtn.click();
+			if (e.key === "ArrowRight") nextBtn.click();
+			if (e.key === "Escape") closeBtn.click();
+		}
+	});
+	</script>
+  </body>
+</html>

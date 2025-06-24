@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sowinz.com | Client Work</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <nav>
+      <div class="nav__content">
+        <div class="logo"><a href="index.html">Mariyah Dahodwala</a></div>
+        <label for="check" class="checkbox">
+          <i class="ri-menu-line"></i>
+        </label>
+        <input type="checkbox" name="check" id="check" />
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="resume.html">Resume</a></li>
+          <li><a href="portfolio.html">Portfolio</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <section class="section project__page">
+      <div class="resume__container">
+        <p class="subtitle">Client Work</p>
+        <h1 class="title"><span>Sowinz.com</span></h1>
+
+        <p class="project__info">
+          A live e-commerce store for a premium organic skincare and haircare brand.
+          <br />
+          <strong>Live:</strong> <a href="https://sowinz.com" target="_blank">Visit Site</a>
+        </p>
+
+        <p class="description">
+          Sowinz.com is a Shopify-based e-commerce website built for a premium skincare and haircare brand that focuses on organic, chemical-free products.
+          <br /><br />
+          The website includes custom-designed sections, product bundles (e.g., 2-combo options), discount code features, UPI/COD payment integration, and SEO-optimized content.
+          I also handled visual content using Canva and Photoshop, set up affiliate marketing with GoAffPro, and connected Meta Business tools for ad analytics and shop integration.
+        </p>
+
+        <h3>Technologies & Tools Used</h3>
+        <div class="tech__badges">
+          <span>Shopify</span>
+          <span>Liquid</span>
+          <span>HTML</span>
+          <span>CSS</span>
+          <span>Canva</span>
+          <span>Photoshop</span>
+          <span>GoAffPro</span>
+          <span>Meta Business Suite</span>
+        </div>
+
+        <h3 style="margin-top: 2rem;">Project Screenshots</h3> 
+		<div class="gallery">
+			<img src="assets/sowinz-home.png" alt="Screenshot 1" class="gallery-img" />
+			<img src="assets/sowinz-product.png" alt="Screenshot 2" class="gallery-img" />
+			<img src="assets/sowinz-productpage.png" alt="Screenshot 3" class="gallery-img" />
+			<img src="assets/sowinz-cart.png" alt="Screenshot 4" class="gallery-img" />
+		</div>
+
+		<!-- Lightbox Modal -->
+		<div id="lightbox" class="lightbox">
+			<span class="close">&times;</span>
+			<img class="lightbox-content" id="lightbox-img" />
+			<div class="nav-arrows">
+				<span class="prev">&#10094;</span>
+				<span class="next">&#10095;</span>
+			</div>
+		</div>
+
+        <a href="portfolio.html" class="btn__view" style="margin-top: 2rem;">← Back to Portfolio</a>
+      </div>
+    </section>
+	
+	<script>
+	const galleryImages = document.querySelectorAll(".gallery-img");
+	const lightbox = document.getElementById("lightbox");
+	const lightboxImg = document.getElementById("lightbox-img");
+	const closeBtn = document.querySelector(".close");
+	const prevBtn = document.querySelector(".prev");
+	const nextBtn = document.querySelector(".next");
+
+	let currentIndex = 0;
+
+	function openLightbox(index) {
+		currentIndex = index;
+		lightbox.style.display = "block";
+		lightboxImg.src = galleryImages[index].src;
+	}
+
+	galleryImages.forEach((img, index) => {
+		img.addEventListener("click", () => openLightbox(index));
+	});
+
+	closeBtn.addEventListener("click", () => (lightbox.style.display = "none"));
+
+	prevBtn.addEventListener("click", () => {
+		currentIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length;
+		lightboxImg.src = galleryImages[currentIndex].src;
+	});
+
+	nextBtn.addEventListener("click", () => {
+		currentIndex = (currentIndex + 1) % galleryImages.length;
+		lightboxImg.src = galleryImages[currentIndex].src;
+	});
+
+	window.addEventListener("keydown", (e) => {
+		if (lightbox.style.display === "block") {
+			if (e.key === "ArrowLeft") prevBtn.click();
+			if (e.key === "ArrowRight") nextBtn.click();
+			if (e.key === "Escape") closeBtn.click();
+		}
+	});
+	</script>
+  </body>
+</html>

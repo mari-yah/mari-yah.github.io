@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SFMKart | Client Work</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <nav>
+      <div class="nav__content">
+        <div class="logo"><a href="index.html">Mariyah Dahodwala</a></div>
+        <label for="check" class="checkbox">
+          <i class="ri-menu-line"></i>
+        </label>
+        <input type="checkbox" name="check" id="check" />
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="resume.html">Resume</a></li>
+          <li><a href="portfolio.html">Portfolio</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <section class="section project__page">
+		<br><br><br><br>
+      <div class="resume__container">
+        <p class="subtitle">Client Work</p>
+        <h1 class="title"><span>SFMKart</span></h1>
+
+        <p class="project__info">
+          A multi-category e-commerce website built with WordPress for local and online product delivery.
+          <br />
+          <strong>Live:</strong> <a href="https://sfmkart.com" target="_blank">Visit Site</a>
+        </p>
+
+        <p class="description">
+          I contributed to the SFMKart project by managing product uploads, setting accurate pricing, and handling layout tweaks using WordPress CMS and WooCommerce. 
+          The store contains a wide range of industrial products of Various brands like Stanley, Dewalt, 3M and more.
+          <br /><br />
+          I also assisted in managing the website’s back-end product visibility, stock updates, and minor styling changes as part of the ongoing maintenance process.
+        </p>
+
+        <h3> Technologies & Tools Used</h3>
+        <div class="tech__badges">
+          <span>WordPress</span>
+          <span>WooCommerce</span>
+          <span>HTML</span>
+          <span>CMS Management</span>
+          <span>Product Cataloging</span>
+          <span>Pricing Strategy</span>
+        </div>
+
+        <h3 style="margin-top: 2rem;">Project Screenshots</h3> 
+		<div class="gallery">
+			<img src="assets/sfmkart-home.png" alt="Screenshot 1" class="gallery-img" />
+			<img src="assets/sfmkart.png" alt="Screenshot 2" class="gallery-img" />
+			<img src="assets/sfm.png" alt="Screenshot 3" class="gallery-img" />
+			<img src="assets/sfm-product.png" alt="Screenshot 4" class="gallery-img" />
+		</div>
+
+		<!-- Lightbox Modal -->
+		<div id="lightbox" class="lightbox">
+			<span class="close">&times;</span>
+			<img class="lightbox-content" id="lightbox-img" />
+			<div class="nav-arrows">
+				<span class="prev">&#10094;</span>
+				<span class="next">&#10095;</span>
+			</div>
+		</div>
+
+        <a href="portfolio.html" class="btn__view" style="margin-top: 2rem;">← Back to Portfolio</a>
+      </div>
+    </section>
+	
+	<script>
+	const galleryImages = document.querySelectorAll(".gallery-img");
+	const lightbox = document.getElementById("lightbox");
+	const lightboxImg = document.getElementById("lightbox-img");
+	const closeBtn = document.querySelector(".close");
+	const prevBtn = document.querySelector(".prev");
+	const nextBtn = document.querySelector(".next");
+
+	let currentIndex = 0;
+
+	function openLightbox(index) {
+		currentIndex = index;
+		lightbox.style.display = "block";
+		lightboxImg.src = galleryImages[index].src;
+	}
+
+	galleryImages.forEach((img, index) => {
+		img.addEventListener("click", () => openLightbox(index));
+	});
+
+	closeBtn.addEventListener("click", () => (lightbox.style.display = "none"));
+
+	prevBtn.addEventListener("click", () => {
+		currentIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length;
+		lightboxImg.src = galleryImages[currentIndex].src;
+	});
+
+	nextBtn.addEventListener("click", () => {
+		currentIndex = (currentIndex + 1) % galleryImages.length;
+		lightboxImg.src = galleryImages[currentIndex].src;
+	});
+
+	window.addEventListener("keydown", (e) => {
+		if (lightbox.style.display === "block") {
+			if (e.key === "ArrowLeft") prevBtn.click();
+			if (e.key === "ArrowRight") nextBtn.click();
+			if (e.key === "Escape") closeBtn.click();
+		}
+	});
+	</script>
+  </body>
+</html>
